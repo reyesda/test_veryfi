@@ -44,4 +44,4 @@ def check_and_read(path: str):
         return read_file(path)
 
 def get_all_files_by_extension(path: str, extension: str)-> list:
-    return [file_name for file_name in os.listdir(path) if extension in file_name]
+    return {file_name: path+"/"+file_name for file_name in os.listdir(path) if extension in file_name}
