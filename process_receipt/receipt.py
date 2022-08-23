@@ -60,14 +60,8 @@ class Receipt:
         max_pixel_y = 0
         max_pixel_x = 0
 
-        min_pixel_x = 0
-        min_pixel_y = 0
-
         for list_elements in self.__list_all_data:
             max_pixel_x = max([list_elements[4], max_pixel_x])
             max_pixel_y = max([list_elements[5], max_pixel_y])
 
-            min_pixel_x = min([list_elements[0], min_pixel_x])
-            min_pixel_y = min([list_elements[1], min_pixel_x])
-
-        return (max_pixel_x, max_pixel_y, min_pixel_x, min_pixel_y)
+        return (max_pixel_x, max_pixel_y)
