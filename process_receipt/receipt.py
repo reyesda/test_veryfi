@@ -1,6 +1,8 @@
 from .read_file import check_and_read
 from .process import get_main_blocks, get_all_line_items, get_company_info, get_total, get_date
 
+import json
+
 class Item:
     def __init__(self, properties: list) -> None:
         self.sku: str = properties[0]
@@ -18,7 +20,7 @@ class Item:
 class Receipt:
     _list_only_text: list = []
     _list_all_data: list = []
-    _main_blocks: list = []
+    _list_main_blocks: list = []
 
     company: str = ''
     date: str = ''
@@ -28,11 +30,11 @@ class Receipt:
 
     def __init__(self, file_path: str) -> None:
         self._list_all_data, self._list_only_text = check_and_read(file_path)
-        self._main_blocks = get_main_blocks(self._list_only_text, self._list_only_text)
-        self.company, self.address = get_company_info(self._main_blocks[0])
-        self.total = get_total(self._main_blocks[2])
-        self.date = get_date(self._main_blocks[2])
-        self.line_items = self._fill_out_line_items(get_all_line_items(self._main_blocks[1]))
+        self._list_main_blocks = get_main_blocks(self._list_only_text, self._list_only_text)
+        self.company, self.address = get_company_info(self._list_main_blocks[0])
+        self.total = get_total(self._list_main_blocks[2])
+        self.date = get_date(self._list_main_blocks[2])
+        self.line_items = self._fill_out_line_items(get_all_line_items(self._list_main_blocks[1]))
 
     @staticmethod
     def _fill_out_line_items(list_items: list)-> list:
@@ -43,12 +45,7 @@ class Receipt:
         return items
 
     def __repr__(self) -> str:
-        final = {}
-        for key, value in vars(self).items():
-            if not '__' in key:
-                final[key] = value
-
-        return str(final)
+        return json.dumps(self.result(), indent=3, sort_keys=True)
 
     def __getitem__(self, index)-> str:
         return self.line_items[index]
@@ -65,3 +62,14 @@ class Receipt:
             max_pixel_y = max([list_elements[5], max_pixel_y])
 
         return (max_pixel_x, max_pixel_y)
+
+    def result(self)-> dict:
+        final = {}
+        for key, value in vars(self).items():
+            if not 'list_' in key:
+                if isinstance(value, list):
+                    value = [ob.result() for ob in value]
+
+                final[key] = value
+
+        return final
