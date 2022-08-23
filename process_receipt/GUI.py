@@ -6,6 +6,7 @@ def graph_receipt(receipt: object)-> object:
 
     width = max_min[0] + 5
     height = max_min[1] + 5
+    
     white = (250, 250, 250)
     black = (0, 0, 0)
     gray = (70, 70, 70)
