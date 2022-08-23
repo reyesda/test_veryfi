@@ -9,8 +9,6 @@ The solution of the problem is “main_basic.py” script. You can run it withou
 
 Finally, you must install (Pillow==9.2.0) on your virtual environment. You can use this command “pip install -r  libraries.txt” 
 
+You can find additional information in the “/test_files/My notes.pdf” file.
 
 ![alt text](https://github.com/reyesda/test_veryfi/blob/main/test_files/GUI_example.png?raw=true)
-
-
-You can find additional information in the “/test_files/My notes.pdf” file.
