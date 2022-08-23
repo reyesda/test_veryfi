@@ -1,5 +1,5 @@
 import re
-from read_file import process_text_data
+from .read_file import process_text_data
 
 def find_indexes_equal_character(block: list, element: str)-> list:
     return [index for index, text_element in enumerate(block) if  element == text_element]
