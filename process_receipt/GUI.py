@@ -1,3 +1,9 @@
+# ==============================================
+# Marcos Reyes
+# Medellín-Colombia
+# 23/08/2022
+# ==============================================
+
 from .receipt import Receipt
 from .read_file import get_all_files_by_extension
 

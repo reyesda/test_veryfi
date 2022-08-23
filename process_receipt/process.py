@@ -1,3 +1,9 @@
+# ==============================================
+# Marcos Reyes
+# Medellín-Colombia
+# 23/08/2022
+# ==============================================
+
 import re
 from .read_file import process_text_data
 

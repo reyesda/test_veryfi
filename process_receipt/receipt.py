@@ -1,3 +1,9 @@
+# ==============================================
+# Marcos Reyes
+# Medellín-Colombia
+# 23/08/2022
+# ==============================================
+
 from .read_file import check_and_read
 from .process import get_main_blocks, get_all_line_items, get_company_info, get_total, get_date
 
