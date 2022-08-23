@@ -156,6 +156,7 @@ class OptionContainer:
             self.labels_request = list(self.files_from_directory.keys())
             self.drop_request['values'] = self.labels_request 
             self.drop_request.current(0)
+            self.selected(None, main_frame)
 
         except AttributeError:
             self.read_document_error = True
